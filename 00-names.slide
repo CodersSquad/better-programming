@@ -1,0 +1,79 @@
+Better Programming
+Best practices and key learnings of the Art of Programming
+22 Jan 2019
+Tags: coders, programming
+
+Obed N Munoz
+Cloud Software Engineer, Intel Corporation
+obed.n.munoz@gmail.com
+http://obedmr.com
+@_obedmr
+
+* Names
+
+* Use descriptive names for globals, short names for locals
+
+_From:_
+
+ for (theElementIndex = 0; theElementIndex < numberOfElements; theElementIndex++)
+     elementArray[theElementIndex] = theElementIndex;
+
+*To:*
+
+ for (i = 0; i < nelems; i++)
+     elem[i] = i;
+
+* Be consistent
+Give related things related names that show their relationship and highlight their difference.
+
+_From:_
+
+ queue.queueCapacity
+
+*To:*
+
+ queue.capacity
+
+
+* Use Active names for functions
+
+Function names should be based on active verbs and followed by nouns.
+
+ putchat('\n');
+
+Boolean-return functions?
+
+_From:_
+
+ if(checkoctal(c)) ...
+
+
+*To:*
+
+ if(isoctal(c)) ...
+
+
+* Be Accurate
+A name not only labels, it conveys information to the reader.
+
+Let's see:
+
+ #define isoctal(c) ( (c) >= '0' && (c) <= 8 )
+
+What about this:
+
+ #define isoctal(c) ( (c) >= '0' && (c) <= 7 )
+
+Let's improve it:
+
+ int smaller(char *c, char *t) {
+     if (strcmp(s, t) < 1)
+     	return 1;
+     else
+        return 0;
+
+
+* Resources
+This material is genereated thanks to some extracts of the following book:
+
+- The Practice of Programming _by_ _Brian_ _W._ _Kernighan_ _and_ _Rob_ _Pike_
