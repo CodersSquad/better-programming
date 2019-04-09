@@ -1,0 +1,214 @@
+Keep the Style
+Best practices and key learnings of the Art of Programming
+09 Apr 2019
+Tags: coders, programming
+
+Obed N Munoz
+Cloud Software Engineer
+obed.n.munoz@[ gmail | tec ].com
+http://talks.obedmr.com
+@_obedmr
+
+* Names
+
+* Use descriptive names for globals, short names for locals
+
+_From:_
+
+ for (theElementIndex = 0; theElementIndex < numberOfElements; theElementIndex++)
+     elementArray[theElementIndex] = theElementIndex;
+
+*To:*
+
+ for (i = 0; i < nelems; i++)
+     elem[i] = i;
+
+* Be consistent
+Give related things related names that show their relationship and highlight their difference.
+
+_From:_
+
+ queue.queueCapacity
+
+*To:*
+
+ queue.capacity
+
+
+* Use Active names for functions
+
+Function names should be based on active verbs and followed by nouns.
+
+ putchat('\n');
+
+Boolean-return functions?
+
+_From:_
+
+ if(checkoctal(c)) ...
+
+
+*To:*
+
+ if(isoctal(c)) ...
+
+
+* Be Accurate
+A name not only labels, it conveys information to the reader.
+
+Let's see:
+
+ #define isoctal(c) ( (c) >= '0' && (c) <= 8 )
+
+What about this:
+
+ #define isoctal(c) ( (c) >= '0' && (c) <= 7 )
+
+Let's improve it:
+
+ int smaller(char *c, char *t) {
+     if (strcmp(c, t) < 1)
+     	return 1;
+     else
+        return 0;
+
+
+* Expressions and Statements
+
+
+* Indent to show structure
+
+Write expressions and statements in a way that makes their meaning as transparent as possible. Write the clearest code that does the job.
+
+Consider the following example:
+
+ for(n++;n<100;field[n++]='\n');
+ *i='\0'; return('\n');
+
+Now, let's reformat and see how it looks and makes more sense:
+
+ for (n++; n < 100; field[n++]='\0')
+     ;
+ *i = '\0';
+ return ('\n');
+
+What if:
+
+ for (n++; n < 100; n++)
+     field[n]='\0';
+ *i = '\0';
+ return ('\n');
+
+
+* Use the natural form for expressions
+
+Write expressions as you might speak them aloud.
+
+Condittional expressions are not easy to understand when there are negations in them:
+
+ if (!(block_id < actblks)) || !(block_id >= unblocks))
+     ...
+
+How can you make it more naturally readable?
+
+ # Your solution comes here:
+ #
+ #
+ #
+ #
+ #
+
+
+* Parenthesize to resolve ambiguity
+
+Specify grouping and can be used to make the intent clear even when they are not required. It doesn't hurt but provides more clarity.
+
+Operators' precedence is not the expertise area for everyone. At the end, your code will be read by many.
+
+Consider the following bitwise operation:
+
+ if (x&MASK == BITS)
+
+Option 1:
+
+ if (x & (MASK == BITS))
+
+
+Option 2:
+
+ if ((x&MASK) == BITS)
+
+Which one is the right one?
+
+
+* Break up complex expressions
+
+Some programming languages as C, C++ or Java have rich expressions syntax and operators.
+
+People is always looking to have the shortest single line of code solution. It's cool and you seem like a hacker, but:
+
+ *x += (*xp=(2*k < (n-m) ? c[k+1] : d[k--]))
+
+What it means:
+
+ # Your solution comes here
+ #
+ #
+ #
+ #
+ #
+ #
+
+
+
+* Be clear
+
+Programmers creativity is endless and sometimes it wil be used to write the most concise and clever code.
+
+Sometimes it is misapplied. The goal is to write clear code, not clever code.
+
+Let's consider this:
+
+ child=(!LC&&!RC)?0:(!LC?RC:LC);
+
+What it means?
+
+ # Your solution comes here:
+ #
+ #
+ #
+ #
+ #
+ #
+
+So, when it's good to use the `?` operator?
+
+
+* Be careful with side effects
+
+Side effects can be convenient, but they can cause some trouble if you don't pay attention. Exercise caution in any expression with side effects.
+
+ str[i++] = str[i++] = ' ';
+
+ # What's the result?
+ #
+ #
+ # How can you fix it?
+ #
+ #
+
+Another one with I/O:
+
+ scanf("%d, %d", &yr, &profit[yr]);
+
+ # What's the result?
+ #
+ #
+ # How can you fix it?
+ #
+ #
+
+* Resources
+This material is genereated thanks to some extracts of the following book:
+
+- The Practice of Programming _by_ _Brian_ _W._ _Kernighan_ _and_ _Rob_ _Pike_
