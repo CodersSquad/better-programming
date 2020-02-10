@@ -82,7 +82,7 @@ Write expressions and statements in a way that makes their meaning as transparen
 
 Consider the following example:
 
- for(n++;n<100;field[n++]='\n');
+ for(n++;n<100;field[n++]='\0');
  *i='\0'; return('\n');
 
 Now, let's reformat and see how it looks and makes more sense:
